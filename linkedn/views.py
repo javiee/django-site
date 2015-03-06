@@ -46,9 +46,6 @@ def linkedn_authenticated(request):
     if resp['status'] != '200':
         raise Exception("Invalid response")
     access_token = dict(urlparse.parse_qsl(content))
-
-    """{'oauth_token_secret': 'dec03f32-8d40-41d6-82c9-0493123fe84a', 'oauth_authorization_expires_in': '5183994', 'oauth_token': '6d0c2b02-de0c-45e5-99c0-05e16475310e', 'oauth_expires_in': '5183994'}
-    """
     url = "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,educations,certifications,three-current-positions,three-past-positions)?format=json"     
     token_user = oauth.Token(access_token['oauth_token'], access_token['oauth_token_secret'])
     client = oauth.Client(consumer, token_user)
