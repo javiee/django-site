@@ -1,11 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from linkedn import views
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'kaisen.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^polls/',include('polls.urls',namespace="polls")),
-    url(r'^linkedn/',include('linkedn.urls',namespace="linkedn")),
+    url(r'^$', 'linkedn.views.index'),
+    url(r'^contact/', views.contacform, name = 'linkedn_contacform'),
+    url(r'^linkedn/', include('linkedn.urls', namespace = "linkedn")),
     url(r'^admin/', include(admin.site.urls)),
-)
+    )
+
